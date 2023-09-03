@@ -1,0 +1,37 @@
+o
+
+    
+R�d�  �                   @   s@   d Z ddlmZ ddlZdZdZdZdZd
+dd�Z	d
+dd	�Z
+dS )zRnit
+
+Revision ID: 24e3bca8dbc3
+Revises: 
+Create Date: 2023-06-25 17:41:17.381797
+
+�    )�opNZ24e3bca8dbc3�returnc                   C   s�  t �dtjdt�� dd�tjdtjdd�dd�t�d�� t �dtjdt�� dd�tjd	tjd
+d�dd�t�d�� t �dtjdt�� dd�tjdtjd
+d�dd�tjdt�� d
+d�tjdgdgdd�t�d�� t �dtjdt�� dd�tjd	tjd
+d�dd�tjdt�� d
+d�tjdgdgdd�t�d�� t �dtjdt�� dd�tjdt�� dd�tjdt�� d
+d�tjdt�� d
+d�tjdt�� d
+d�tjdgdgdd�tjdgdgdd�t�d��	 d S )N�groups�idF)�nullable�name�(   )�length�teachers�fullname�F   �disciplines�
+teacher_idTzteachers.id�CASCADE)�ondelete�students�group_idz	groups.id�grades�grade�date_of�
+student_id�
+discipline_idzdisciplines.idzstudents.id)	r   �create_table�sa�Column�Integer�String�PrimaryKeyConstraint�ForeignKeyConstraint�Date� r    r    �4D:\python\WEB_07\mergen\versions\24e3bca8dbc3_nit.py�upgrade   sD   �����r"   c                   C   s6   t �d� t �d� t �d� t �d� t �d� d S )Nr   r   r
+   r
+   r   )r   �
+drop_tabler    r    r    r!   �	downgrade:   s
+   
+
+
+
+r$   )r   N)�__doc__�alembicr   �
+sqlalchemyr   �revision�
+down_revision�
+branch_labels�
+depends_onr"   r$   r    r    r    r!   �<module>   s    
+'
